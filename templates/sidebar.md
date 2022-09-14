@@ -6,7 +6,7 @@
 - [[Contributing to WL ModCabinet]]
 - [[Authors]]
 - [[Mod Categories]]
-- [[All Mods|all]]
+- [[All Mods]]
 - [[Wiki Status]]
 
 **Wonderlands Mods**

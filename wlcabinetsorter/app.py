@@ -1670,8 +1670,9 @@ class App(object):
         sidebar_filename = '_Sidebar.md'
         category_filename = 'Mod-Categories.md'
         authors_filename = 'Authors.md'
-        reserved_pages = set([home_filename, status_filename, sidebar_filename, category_filename, authors_filename])
-        created_pages = set([home_filename, status_filename, sidebar_filename, category_filename, authors_filename])
+        all_mods_filename = 'All-Mods.md'
+        reserved_pages = set([home_filename, status_filename, sidebar_filename, category_filename, authors_filename, all_mods_filename])
+        created_pages = set([home_filename, status_filename, sidebar_filename, category_filename, authors_filename, all_mods_filename])
 
         # Anything in our static_pages dir should be reserved
         self.logger.debug('Reading in static pages')
@@ -1932,7 +1933,7 @@ class App(object):
 
         self.logger.debug('Writing out all mods page')
         self.write_wiki_file(wiki_files,
-                'all.md',
+                all_mods_filename,
                 self.all_template.render({
                     'mods': sorted( [x for l in list(seen_cats.values()) for x in l] ),
                     'authors': self.author_cache,
