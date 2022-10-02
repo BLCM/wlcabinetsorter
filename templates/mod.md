@@ -74,8 +74,8 @@
 <td align="center">
 <b><a href="{{ dl_base_url }}{{ mod.rel_url() }}">{{ mod.mod_title }}</a></b>
 <br/>
-<em>(right click and "Save Link As", "Copy Link," or<br/>
-create a shortcut by dragging it into a folder)</em>
+<em>OHL (local file): Right click and "Save Link As"<br/>
+OHL (web loading): Create a shortcut by dragging into a folder</em>
 {%- if mod.pakfile %}
 <br/>
 <span style="color: red"><b>Note:</b></span> Requires the pakfile listed below to work properly!
