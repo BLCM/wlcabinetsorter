@@ -1648,6 +1648,9 @@ class App(object):
         seen_cats = {}
         
         # Hardcoded "fake" mods!
+        seen_cats['loot-system'] = [
+                FakeMod('Better Loot', wiki_link_html('Apocalyptech', 'Apocalyptech')),
+                ]
         #seen_cats['randomizer'] = [
         #        FakeMod('Enemy and Skill Randomizers', '{} and {}'.format(
         #            wiki_link_html('SSpyR', 'SSpyR'),
@@ -1656,11 +1659,8 @@ class App(object):
         #            'HackerSmacker',
         #            )),
         #        ]
-        #seen_cats['mayhem'] = [
-        #        FakeMod('Mayhem Mode Configurator', wiki_link_html('Apocalyptech', 'Apocalyptech')),
-        #        ]
-        #if 'Apocalyptech' in self.author_cache:
-        #    self.author_cache['Apocalyptech'].add_mod(seen_cats['mayhem'][-1])
+        if 'Apocalyptech' in self.author_cache:
+            self.author_cache['Apocalyptech'].add_mod(seen_cats['loot-system'][-1])
         #if 'SSpyR' in self.author_cache:
         #    self.author_cache['SSpyR'].add_mod(seen_cats['randomizer'][-1])
 
