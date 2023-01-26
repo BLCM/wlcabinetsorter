@@ -445,6 +445,11 @@ class ModFile(Cacheable):
         self.errors = False
         self.is_real = True
 
+        if filename is not None and filename.lower().endswith('.wlpakinfo'):
+            self.is_pak_only = True
+        else:
+            self.is_pak_only = False
+
         if dirinfo:
             # This is when we're actually loading from a file
             self.seen = True
@@ -560,6 +565,12 @@ class ModFile(Cacheable):
                 self.add_other_author(oa)
         else:
             self.other_authors = []
+
+        # Added 2023-01-25
+        if self.full_filename is not None and self.full_filename.lower().endswith('.wlpakinfo'):
+            self.is_pak_only = True
+        else:
+            self.is_pak_only = False
 
         self.mod_title = input_dict['t']
         self.mod_title_display = input_dict['i']
@@ -946,6 +957,8 @@ class ModFile(Cacheable):
             raise NotAModFile('No mod title found')
         if not self.categories:
             raise NotAModFile('No categories found')
+        if self.is_pak_only and not self.pakfile:
+            raise NotAModFile('No pakfile found on pak-only mod')
 
     def add_comment_line(self, line):
         """
@@ -1724,7 +1737,9 @@ class App(object):
 
             # Loop through the mods found in the dir and load 'em, if we can
             processed_files = []
-            for mod_file in dirinfo.get_all_with_ext('wlhotfix') + dirinfo.get_all_with_ext('wlhotfix.gz'):
+            for mod_file in dirinfo.get_all_with_ext('wlhotfix') \
+                    + dirinfo.get_all_with_ext('wlhotfix.gz') \
+                    + dirinfo.get_all_with_ext('wlpakinfo'):
                 if 'readme' not in mod_file.lower():
                     try:
                         processed_files.append(self.mod_cache.load(dirinfo, mod_file,

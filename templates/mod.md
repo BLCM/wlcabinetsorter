@@ -69,6 +69,8 @@
 
 ## Download
 
+{%- if not mod.is_pak_only %}
+
 <table>
 <tr>
 <td align="center">
@@ -83,6 +85,7 @@ OHL (web loading): Create a shortcut by dragging into a folder</em>
 </td>
 </tr>
 </table>
+{%- endif %}
 
 {%- if mod.pakfile %}
 
